@@ -7,9 +7,12 @@ export const HomePage = () => {
 
   const navigate = useNavigate();
 
+  // Function to create a note
    const handleClick = async (e) => {
 
       console.log("Home ");
+      
+      // API Gateway URL to create note
       const url = 'https://n2n8l1s0d4.execute-api.us-east-1.amazonaws.com/lab-1/create-note'; 
 
       try {
@@ -29,9 +32,10 @@ export const HomePage = () => {
         console.log(error);
       }
 
-      navigate('/texteditor');
+      navigate('/texteditor'); // Navigate to text editor after note creation
     };
 
+    // function to view note
     const handleViewClick = async (e) => {
       const token = "";
       navigate('/allnotes', { state: { token: token } });

@@ -10,10 +10,12 @@ export const AllNotes = () => {
    
     
     useEffect(() => {
-  
+      
+      // Function to fetch all notes
       const fetchFileID = async () => {
         setIsLoading(true);
-
+  
+        // API Gateway URL to view note
         const url = 'https://n2n8l1s0d4.execute-api.us-east-1.amazonaws.com/lab-1/get-all-notes';
   
         try {
@@ -28,12 +30,15 @@ export const AllNotes = () => {
         }
       };
       fetchFileID();
-    }, []);
+    }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount in class components
 
+     // Function to handle deletion of a note
     const handleDelete = async (noteId) => {
 
       const noteIdset = noteId.slice(0, -5);
       console.log(`Deleting note with ID: ${noteIdset}`);
+       
+      // API Gateway URL to delete note
       const url = 'https://n2n8l1s0d4.execute-api.us-east-1.amazonaws.com/lab-1/delete-note' ;
       try {
           await axios.delete(url,{
@@ -47,15 +52,18 @@ export const AllNotes = () => {
       }
   };
   
+  // Function to handle navigation to home page
     const handleHomeClick = () => {
       navigate('/');
     }
-  
+    
+    // Render loading message while fetching data
     if (isLoading) {
       return <div className="flex justify-center items-center h-screen">
         <div>Loading...</div>
       </div>;
     }
+    // Render all notes once data is fetched
     return (
       <>
         <div className="flex justify-center items-center h-screen flex-col bg-gray-100">

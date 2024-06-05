@@ -13,10 +13,12 @@ const TextEditor = () => {
     console.log(file);
   }, [file]);
 
+  // Function to handle note content change
   const handleNoteChange = (event) => {
     setNote(event.target.value);
   };
 
+  // Function to save note
   const handleSave = async () => {
 
     console.log('Saved note:', note);
@@ -36,11 +38,13 @@ const TextEditor = () => {
     }
   };
 
+  // Function to navigate to view notes page
   const handleViewNotes = () => {
     console.log('Saved note:', note);
      navigate('/allnotes');
   };
-
+  
+  // Function to navigate back to home page
   const handleHomeClick = () => {
      navigate('/' );
   };
