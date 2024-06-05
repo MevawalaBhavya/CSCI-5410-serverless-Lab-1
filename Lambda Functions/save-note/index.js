@@ -8,6 +8,7 @@ exports.handler = async (event) => {
 
   try {
     
+    // Configuration for storing HTML content in S3
     const s3Input = {
       Bucket: "serverless-lab-1-bucket-1",
       Key: `${fileId}.html`,
@@ -15,7 +16,10 @@ exports.handler = async (event) => {
       ContentType: "text/html", 
     };
 
+    // Store HTML content in S3
     await s3.putObject(s3Input).promise();
+    
+    // Return success response
     return {
       statusCode: 200,
       message: "File saved !!",
